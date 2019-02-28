@@ -17,6 +17,20 @@ exports.config =  {
     ],
 
     cucumberOpts: {
-        require: ['step-definitions/*.js', 'support/hooks.js']//місце реалізації кроків
+        require: ['step-definitions/*.js', 'support/hooks.js'],//місце реалізації кроків
+        keepAlive: false,
+        format: ['json:reports/json/results.json', 'progress'],
+        strict: true,
+
     },
+    plugins: [{
+        package: 'protractor-multiple-cucumber-html-reporter-plugin',
+        options: {
+            automaticallyGenerateReport: true,
+            displayDuration: true,
+            durationInMS: true,
+            saveCollectedJSON: true
+        }
+    }]
+
 };
